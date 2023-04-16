@@ -3,7 +3,25 @@ package org.example;
 public class TapeEquilibrium {
 
     public int solution(int[] A){
-        return -1;
+        int sum=0;
+        for(int i=0;i<A.length;i++){
+            sum+=A[i];
+        }
+        int leftSum=0;
+        int rightSum=sum;
+
+        int tempMinimum=sum;
+        //int minIndex=0;
+        for(int i=0;i<A.length;i++){
+            leftSum+=A[i];
+            rightSum-=A[i];
+            int min=Math.abs(leftSum-rightSum);
+            if(min<=tempMinimum){
+                tempMinimum=min;
+                //minIndex=i;
+            }
+        }
+        return tempMinimum;
     }
 
     public int badSolution(int[] A){
